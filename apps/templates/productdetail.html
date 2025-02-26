@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ product.product_name }}</h1>
+    <img src="{{ url_for('static', filename='images/' + product.product_picture) }}" 
+         alt="{{ product.product_name }}" width="300">
+    <p><strong>Price:</strong> ${{ product.current_price }}</p>
+    <p><strong>Previous Price:</strong> ${{ product.previous_price }}</p>
+    <p><strong>Description:</strong> {{ product.description }}</p>
+    <p><strong>Color:</strong> {{ product.color }}</p>
+    <p><strong>Rating:</strong> {{ product.rating }}/5</p>
+    <p><strong>Category:</strong> {{ product.category }}</p>
+    <p><strong>Available Quantity:</strong> {{ product.quantity }}</p>
+
+    <a href="{{ url_for('views.index') }}">Back to Products</a>
+{% endblock %}
