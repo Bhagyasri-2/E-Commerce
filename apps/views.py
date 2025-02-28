@@ -1,34 +1,40 @@
 from flask import Blueprint, render_template
-from .models import Product
-
- # Import your Product model
-from apps import db  # Import database instance
+from app.models import db, Product  # Import db and Product from models
+import time
 
 views_bp = Blueprint('views', __name__, template_folder='templates')
 
 @views_bp.route('/')
 def index():
-    
-    products = Product.query.all()  # Fetch all products
-    return render_template('index.html', products=products)
+    return render_template('index.html',now=int(time.time()))
 
 @views_bp.route('/women')
 def women():
-   
-    products = Product.query.filter_by(category='Women').all()
-    return render_template('women.html', products=products)
+    
+    return render_template("women.html")
 
-@views_bp.route('/wishlist')
-def wishlist():
-   
-    wishlist_items = Product.query.filter(Product.sale == True).all()  # Example: fetching sale items
-    return render_template('wishlist.html', products=wishlist_items)
-
-@views_bp.route('/product/<int:product_id>')
-def product_detail(product_id):
-   
-    product = Product.query.get_or_404(product_id)
-    return render_template('productdetail.html', product=product)
+@views_bp.route('/men')
+def men():
+    
+    return render_template("men.html")
 
 
- 
+@views_bp.route('/kids')
+def kids():
+    
+    return render_template("kids.html")
+
+
+@views_bp.route('/accessories')
+def accessories():
+    
+    return render_template("accessories.html")
+
+
+@views_bp.route('/shoes')
+def shoes():
+    
+    return render_template("kids.html")
+
+
+
