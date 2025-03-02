@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category }} Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <h1>{{ category }} Products</h1>
+
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+    </nav>
+
+    <div class="container">
+        {% if products %}
+            {% for product in products %}
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{ product.image }}" alt="{{ product.name }}">
+                </div>
+                <div class="card-content">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <h4>Price: ₹{{ product.price }}</h4>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No products available in this category.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
+
+

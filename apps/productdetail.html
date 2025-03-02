@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.product_name }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ product.product_picture }}" class="img-fluid" alt="{{ product.product_name }}">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ product.product_name }}</h2>
+                <p>{{ product.description }}</p>
+                <p><strong>Price:</strong> ${{ product.current_price }} <del>${{ product.previous_price }}</del></p>
+                <p><strong>Color:</strong> {{ product.color }}</p>
+                <p><strong>Rating:</strong> ⭐ {{ product.rating }}/5</p>
+                <p><strong>Available Sizes:</strong>
+                    {% if product.size_small > 0 %} S {% endif %}
+                    {% if product.size_medium > 0 %} M {% endif %}
+                    {% if product.size_large > 0 %} L {% endif %}
+                </p>
+                <a href="{{ url_for('index.html') }}" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

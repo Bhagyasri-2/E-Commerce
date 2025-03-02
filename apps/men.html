@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Men's Collection{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/men.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Men's Collection</h1>
+
+    <!-- Filters Section -->
+    <div class="filters mb-4">
+        <label>Category:</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="shirts" name="category" checked>
+            <label class="form-check-label" for="shirts">Shirts</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="tshirts" name="category">
+            <label class="form-check-label" for="tshirts">T-Shirts</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="jeans" name="category">
+            <label class="form-check-label" for="jeans">Jeans</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="ethnic" name="category">
+            <label class="form-check-label" for="ethnic">Ethnic Wear</label>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="row" id="product-list">
+        {% for product in products %}
+        <div class="col-md-3 mb-3 product-card" data-category="{{ product.category }}">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ url_for('static', filename=product.product_picture) }}" class="card-img-top" alt="{{ product.product_name }}">
+                <div class="card-body">
+                    <h6 class="card-title">{{ product.product_name }}</h6>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="fw-bold">₹{{ product.current_price }}
+                        <span class="text-muted text-decoration-line-through">₹{{ product.previous_price }}</span>
+                        <span class="text-danger">
+                            ({{ ((product.previous_price - product.current_price) / product.previous_price) * 100 | round(2) }}% off)
+                        </span>
+                    </p>
+                    <button class="btn btn-primary w-100 add-to-cart" data-id="{{ product.id }}">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/men.js') }}"></script>
+{% endblock %}
