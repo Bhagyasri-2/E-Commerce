@@ -1,0 +1,124 @@
+/* Grid Layout */
+.product-card {
+    transition: transform 0.3s ease-in-out;
+}
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Product Image */
+.card img {
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Rating Badge */
+.badge {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+}
+
+/* Wishlist Button */
+.wishlist-btn {
+    background-color: #fff;
+    color: red;
+    border: 1px solid red;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+.wishlist-btn:hover {
+    background-color: red;
+    color: white;
+}
+
+/* View Details Button */
+.btn-primary {
+ /* Grid Layout */
+.product-card {
+    transition: transform 0.3s ease-in-out;
+}
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Product Image */
+.card img {
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Rating Badge */
+.badge {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+}
+
+/* Wishlist Button */
+.wishlist-btn {
+    background-color: #fff;
+    color: red;
+    border: 1px solid red;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+.wishlist-btn:hover {
+    background-color: red;
+    color: white;
+}
+
+/* View Details Button */
+.btn-primary {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+}
+
+/* Add to Cart Button */
+.btn-success {
+    font-size: 0.9rem;
+    padding: 8px;
+    font-weight: bold;
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+@media (max-width: 480px) {
+    .col-sm-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+   font-size: 0.9rem;
+    padding: 5px 10px;
+}
+
+/* Add to Cart Button */
+.btn-success {
+    font-size: 0.9rem;
+    padding: 8px;
+    font-weight: bold;
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+@media (max-width: 480px) {
+    .col-sm-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+

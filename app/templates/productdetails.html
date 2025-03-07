@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if product %}
+    <div class="product-details">
+        <h2>{{ product.product_name }}</h2>
+
+        <img src="{{ url_for('static', filename='images/' + product.product_picture) }}" 
+             alt="{{ product.product_name }}" 
+             style="max-width: 300px; display: block; margin-bottom: 10px;">
+
+        <p><strong>Current Price:</strong> ${{ product.current_price }}</p>
+        {% if product.previous_price and product.previous_price > (product.current_price or 0) %}
+            <p><strong>Previous Price:</strong> <del>${{ product.previous_price }}</del></p>
+        {% endif %}
+
+        <p><strong>Description:</strong> {{ product.description }}</p>
+        {% if product.color %}
+            <p><strong>Color:</strong> {{ product.color }}</p>
+        {% endif %}
+        <p><strong>Rating:</strong> ⭐ {{ product.rating or 0 }}/5</p>
+        <p><strong>Category:</strong> {{ product.category }}</p>
+        <p><strong>Stock Quantity:</strong> {{ product.quantity or 0 }}</p>
+        <p><strong>On Sale:</strong> {{ "Yes" if product.sale else "No" }}</p>
+
+        <p><strong>Available Sizes:</strong>
+            {% if (product.size_small or 0) > 0 %} S {% endif %}
+            {% if (product.size_medium or 0) > 0 %} M {% endif %}
+            {% if (product.size_large or 0) > 0 %} L {% endif %}
+        </p>
+
+        <a href="{{ url_for('views.index') }}" class="btn btn-primary">Back to Home</a>
+    </div>
+{% else %}
+    <h2>Product Not Found</h2>
+    <a href="{{ url_for('views.index') }}" class="btn btn-secondary">Back to Home</a>
+{% endif %}
+{% endblock %}
